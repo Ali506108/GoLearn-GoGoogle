@@ -24,6 +24,12 @@ func main() {
 
 	netOperation()
 
+	fmt.Println()
+
+	fmt.Print("give me id: ")
+	var id int
+	fmt.Scan(&id)
+	getData(id)
 }
 
 func helloWorld(value string) string {
@@ -32,6 +38,16 @@ func helloWorld(value string) string {
 
 func addNumber(valueOne, valueTwo int) int {
 	return valueOne + valueTwo
+}
+
+func getData(id int) {
+	url := fmt.Sprintf("https://jsonplaceholder.typicode.com/posts/%d", id)
+	resp, err := http.Get(url)
+	if err != nil {
+		fmt.Println("Error occurred:", err)
+	}
+	defer resp.Body.Close()
+	fmt.Println("Response statuse : ", resp.Status, " ", resp.StatusCode, " ", resp.Request.URL)
 }
 
 func netOperation() {
