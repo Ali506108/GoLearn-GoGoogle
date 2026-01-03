@@ -30,6 +30,10 @@ func main() {
 	var id int
 	fmt.Scan(&id)
 	getData(id)
+
+	var data = sayHello("Alex")
+	fmt.Println(data)
+
 }
 
 func helloWorld(value string) string {
@@ -38,6 +42,10 @@ func helloWorld(value string) string {
 
 func addNumber(valueOne, valueTwo int) int {
 	return valueOne + valueTwo
+}
+
+func sayHello(name string) string {
+	return fmt.Sprintf("Hello %d", name)
 }
 
 func getData(id int) {
