@@ -18,4 +18,9 @@ func main() {
 	name := "Alex"
 
 	fmt.Println(name)
+
+	var usename string = "Alex-Uk23"
+
+	fmt.Println(usename)
+
 }
