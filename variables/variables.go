@@ -48,4 +48,51 @@ func main() {
 		fmt.Println()
 	}
 
+	fmt.Println()
+
+	fmt.Println()
+
+	forEach()
+
+	fmt.Println()
+
+	mainWhile()
+
+	fmt.Println("================")
+
+	forWhileForEach()
+
+}
+
+func mainWhile() {
+	i := 5
+
+	for i <= 20 {
+		fmt.Println(i)
+		i++
+	}
+}
+
+func forEach() {
+	rows := 5
+	for i := 1; i <= rows; i++ {
+		for j := 1; j <= rows-i; j++ {
+			fmt.Print(" ")
+		}
+
+		for k := 1; k <= 2*i-1; k++ {
+			fmt.Print("*")
+		}
+		fmt.Println()
+	}
+
+}
+
+func forWhileForEach() {
+	rows := 0
+
+	for rows <= 200 {
+		fmt.Println(rows)
+		rows++
+	}
 }
