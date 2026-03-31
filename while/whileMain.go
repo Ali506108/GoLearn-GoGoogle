@@ -21,8 +21,11 @@ func main() {
 
 	Ints := []int{1, 2, 3, 4}
 	Strings := []string{"One", "Two", "Three"}
-	Print(Ints)
+	Bools := []bool{true, false, true}
 	Print(Strings)
+	Print(Ints)
+	Print_any_type(Bools)
+
 }
 
 func Print[T any](s []T) {
@@ -30,4 +33,10 @@ func Print[T any](s []T) {
 		fmt.Println(v, " ")
 	}
 	fmt.Println()
+}
+
+func Print_any_type[T any](s []T) {
+	for _, v := range s {
+		fmt.Println(v, " ")
+	}
 }
