@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Презентация: Классификация змей | Али Дуйсен</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap');
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #111;
+            overflow: hidden;
+            color: #fff;
+        }
+
+        .slider {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+            transform: scale(1.05);
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+        }
+
+        .slide.active {
+            opacity: 1;
+            transform: scale(1);
+            z-index: 2;
+        }
+
+        /* Эффект матового стекла для карточки с текстом */
+        .content-box {
+            background: rgba(15, 15, 15, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 50px;
+            border-radius: 20px;
+            max-width: 800px;
+            width: 80%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: #00ffcc; /* Неоновый акцент */
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: #fff;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        p, li {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li::before {
+            content: "▹";
+            color: #00ffcc;
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+
+        .highlight {
+            color: #00ffcc;
+            font-weight: 600;
+        }
+
+        /* Навигационные области по краям */
+        .nav-btn {
+            position: absolute;
+            top: 0;
+            width: 15%;
+            height: 100%;
+            z-index: 10;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+            background: rgba(0,0,0,0.1);
+        }
+
+        .nav-btn:hover {
+            opacity: 1;
+        }
+
+        .prev-btn { left: 0; }
+        .next-btn { right: 0; }
+
+        .arrow {
+            color: rgba(255,255,255,0.5);
+            font-size: 4rem;
+            font-weight: bold;
+        }
+
+        /* Индикатор прогресса */
+        .progress-container {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            display: flex;
+            gap: 10px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transition: background 0.3s;
+        }
+
+        .dot.active {
+            background: #00ffcc;
+            box-shadow: 0 0 10px #00ffcc;
+        }
+    </style>
+</head>
+<body>
+
+<div class="slider">
+
+    <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1533558701576-23c65e0272fb?auto=format&fit=crop&w=1920&q=80');">
+        <div class="content-box">
+            <h1>Классификация змей: Ядовитые vs Неядовитые</h1>
+            <h2>Использование Deep Learning и YOLOv8</h2>
+            <p style="text-align: center; margin-top: 40px; color: #aaa;">Автор проекта: <span class="highlight">Али Дуйсен</span></p>
+            <p style="text-align: center; font-size: 1rem; color: #888;">Трек: Vision Detection / Classification</p>
+        </div>
+    </div>
+
+    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1623842183353-839f99e3ebbb?auto=format&fit=crop&w=1920&q=80');">
+        <div class="content-box">
+            <h1>Постановка задачи и Данные</h1>
+            <ul>
+                <li><strong>Главная цель:</strong> Создать модель, способную по фото определить, опасна змея или нет (safe / hospital).</li>
+                <li><strong>Источник данных:</strong> Датасет <code>snake-dataset-india</code>.</li>
+                <li><strong>Объем данных:</strong> Около 2000 изображений.</li>
+                <li><strong>Разделение:</strong> Обучающая выборка (1775 фото) и тестовая (269 фото).</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1920&q=80');">
+        <div class="content-box">
+            <h1>Исследовательский анализ (EDA)</h1>
+            <ul>
+                <li><strong>Баланс классов:</strong> Наблюдается небольшой перевес в сторону опасных змей.</li>
+                <li><strong>Класс Venomous (Ядовитые):</strong> <span class="highlight">1201</span> изображение.</li>
+                <li><strong>Класс Non-Venomous (Неядовитые):</strong> <span class="highlight">843</span> изображения.</li>
+                <li><strong>Подготовка (Препроцессинг):</strong> Ресайз изображений до 224x224 и применение аугментации для защиты от переобучения.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=1920&q=80');">
+        <div class="content-box">
+            <h1>Методология и Обучение</h1>
+            <p>Для эксперимента были выбраны две архитектуры из семейства YOLO:</p>
+            <ul>
+                <li><span class="highlight">YOLOv8n (Nano):</span> Быстрая, легкая модель. Отличный базовый уровень (baseline).</li>
+                <li><span class="highlight">YOLOv8m (Medium):</span> Более глубокая архитектура, требующая больше ресурсов, но потенциально более точная.</li>
+            </ul>
+            <p><strong>Оборудование:</strong> Обучение проводилось на GPU T4.</p>
+            <p><strong>Длительность:</strong> 40 эпох.</p>
+        </div>
+    </div>
+
+    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=1920&q=80');">
+        <div class="content-box">
+            <h1>Результаты тестирования</h1>
+            <p>Модель <strong>YOLOv8m</strong> показала наилучший результат:</p>
+            <ul style="margin-top: 20px;">
+                <li><strong>Accuracy (Точность):</strong> <span class="highlight">89.2%</span> (против 88.5% у Nano)</li>
+                <li><strong>F1-Score:</strong> <span class="highlight">0.891</span></li>
+            </ul>
+            <p style="margin-top: 20px;"><em>Анализ ошибок:</em> Основная трудность для нейросети — мимикрия, когда неядовитые змеи маскируются под ядовитых схожим окрасом.</p>
+        </div>
+    </div>
+
+    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1920&q=80');">
+        <div class="content-box">
+            <h1>Выводы и Будущее проекта</h1>
+            <ul>
+                <li><strong>Итог:</strong> Deep Learning отлично справляется с классификацией змей даже на небольших датасетах.</li>
+                <li><strong>Чему научился:</strong> Работе с данными, обучению моделей YOLO, сравнению метрик и выбору оптимального решения.</li>
+                <li><strong>Планы на будущее:</strong>
+                    <ul>
+                        <li>Добавить функцию Predict для тестирования на любых фото из интернета.</li>
+                        <li>Обучить модель на данных из других регионов для универсальности.</li>
+                    </ul>
+                </li>
+            </ul>
+            <h2 style="margin-top: 30px; color: #00ffcc;">Спасибо за внимание!</h2>
+        </div>
+    </div>
+
+    <div class="nav-btn prev-btn" onclick="changeSlide(-1)">
+        <span class="arrow">&#10094;</span>
+    </div>
+    <div class="nav-btn next-btn" onclick="changeSlide(1)">
+        <span class="arrow">&#10095;</span>
+    </div>
+
+    <div class="progress-container">
+        <div class="dot active"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+    </div>
+
+</div>
+
+<script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
+
+    function showSlide(index) {
+        // Убираем активный класс у всех
+        slides.forEach(slide => slide.classList.remove('active'));
+        dots.forEach(dot => dot.classList.remove('active'));
+
+        // Обработка крайних случаев (зацикливание)
+        if (index >= slides.length) currentSlide = 0;
+        if (index < 0) currentSlide = slides.length - 1;
+
+        // Добавляем активный класс текущему
+        slides[currentSlide].classList.add('active');
+        dots[currentSlide].classList.add('active');
+    }
+
+    function changeSlide(direction) {
+        currentSlide += direction;
+        showSlide(currentSlide);
+    }
+
+    // Управление с клавиатуры
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === 'Space') {
+            changeSlide(1);
+        } else if (e.key === 'ArrowLeft') {
+            changeSlide(-1);
+        }
+    });
+</script>
+
+</body>
+</html>

@@ -7,6 +7,36 @@ import (
 
 func main() {
 
+	arr_for_slice := []int{1, 3, 5, 6, 7, 8, 9}
+	slice := arr_for_slice[2:5]
+
+	for i, v := range slice {
+		fmt.Println(i, v)
+	}
+
+	fmt.Println("Slice is ", slice)
+
+	slice = append(slice, 10, 34)
+	fmt.Println("Slice is ", slice)
+
+	sliceCopy := make([]int, len(slice))
+	copy(sliceCopy, slice)
+	fmt.Println("Slice copy is ", sliceCopy)
+
+	twoD := make([][]int, 4)
+
+	for i := 0; i < 3; i++ {
+		innerLine := i + 1
+		twoD[i] = make([]int, innerLine)
+		for j := 0; j < innerLine; j++ {
+			twoD[i][j] = i + j
+		}
+	}
+
+	fmt.Println(twoD)
+
+	fmt.Println("--")
+
 	var arr = []int{1, 2, 3, 4, 5}
 	fmt.Println("Array is ", arr)
 

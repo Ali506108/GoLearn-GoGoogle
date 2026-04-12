@@ -11,6 +11,21 @@ type User struct {
 	email    string
 	age      int
 	data     time.Time
+	// experience []experience
+	// sex        bool
+}
+
+type experience struct {
+	title    string
+	position string
+	started  time.Time
+	end      time.Time
+}
+
+type Compony struct {
+	title       string
+	description string
+	workers     []User
 }
 
 type Record struct {

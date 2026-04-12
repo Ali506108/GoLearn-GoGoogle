@@ -1,0 +1,137 @@
+apiVersion: v1
+kind: Node
+metadata:
+  annotations:
+    node.alpha.kubernetes.io/ttl: "0"
+    volumes.kubernetes.io/controller-managed-attach-detach: "true"
+  creationTimestamp: "2026-03-28T12:17:36Z"
+  labels:
+    beta.kubernetes.io/arch: arm64
+    beta.kubernetes.io/os: linux
+    kubernetes.io/arch: arm64
+    kubernetes.io/hostname: desktop-control-plane
+    kubernetes.io/os: linux
+    node-role.kubernetes.io/control-plane: ""
+  name: desktop-control-plane
+  resourceVersion: "244310"
+  uid: 5416c658-e424-41fb-ab8f-08caf546d1b4
+spec:
+  podCIDR: 10.244.0.0/24
+  podCIDRs:
+  - 10.244.0.0/24
+  providerID: kind://docker/desktop/desktop-control-plane
+status:
+  addresses:
+  - address: 172.19.0.3
+    type: InternalIP
+  - address: desktop-control-plane
+    type: Hostname
+  allocatable:
+    cpu: "8"
+    ephemeral-storage: 1055761844Ki
+    hugepages-1Gi: "0"
+    hugepages-2Mi: "0"
+    hugepages-32Mi: "0"
+    hugepages-64Ki: "0"
+    memory: 8024748Ki
+    pods: "110"
+  capacity:
+    cpu: "8"
+    ephemeral-storage: 1055761844Ki
+    hugepages-1Gi: "0"
+    hugepages-2Mi: "0"
+    hugepages-32Mi: "0"
+    hugepages-64Ki: "0"
+    memory: 8024748Ki
+    pods: "110"
+  conditions:
+  - lastHeartbeatTime: "2026-04-10T04:22:44Z"
+    lastTransitionTime: "2026-03-28T12:17:35Z"
+    message: kubelet has sufficient memory available
+    reason: KubeletHasSufficientMemory
+    status: "False"
+    type: MemoryPressure
+  - lastHeartbeatTime: "2026-04-10T04:22:44Z"
+    lastTransitionTime: "2026-03-28T12:17:35Z"
+    message: kubelet has no disk pressure
+    reason: KubeletHasNoDiskPressure
+    status: "False"
+    type: DiskPressure
+  - lastHeartbeatTime: "2026-04-10T04:22:44Z"
+    lastTransitionTime: "2026-03-28T12:17:35Z"
+    message: kubelet has sufficient PID available
+    reason: KubeletHasSufficientPID
+    status: "False"
+    type: PIDPressure
+  - lastHeartbeatTime: "2026-04-10T04:22:44Z"
+    lastTransitionTime: "2026-03-29T06:01:49Z"
+    message: kubelet is posting ready status
+    reason: KubeletReady
+    status: "True"
+    type: Ready
+  daemonEndpoints:
+    kubeletEndpoint:
+      Port: 10250
+  features:
+    supplementalGroupsPolicy: true
+  images:
+  - names:
+    - registry.k8s.io/kube-apiserver-arm64:v1.34.3
+    - registry.k8s.io/kube-apiserver:v1.34.3
+    sizeBytes: 84813564
+  - names:
+    - registry.k8s.io/kube-proxy-arm64:v1.34.3
+    - registry.k8s.io/kube-proxy:v1.34.3
+    sizeBytes: 75939529
+  - names:
+    - registry.k8s.io/kube-controller-manager-arm64:v1.34.3
+    - registry.k8s.io/kube-controller-manager:v1.34.3
+    sizeBytes: 72623714
+  - names:
+    - registry.k8s.io/kube-scheduler-arm64:v1.34.3
+    - registry.k8s.io/kube-scheduler:v1.34.3
+    sizeBytes: 51586658
+  - names:
+    - docker.io/kindest/kindnetd:v20251212-v0.29.0-alpha-105-g20ccfc88
+    sizeBytes: 38502448
+  - names:
+    - docker.io/kindest/local-path-provisioner:v20251212-v0.29.0-alpha-105-g20ccfc88
+    sizeBytes: 22025314
+  - names:
+    - registry.k8s.io/etcd:3.6.5-0
+    sizeBytes: 21136588
+  - names:
+    - registry.k8s.io/coredns/coredns:v1.12.1
+    sizeBytes: 20392204
+  - names:
+    - docker.io/kindest/local-path-helper:v20251211-v0.29.0-alpha-100-g82a92c5d
+    sizeBytes: 2954518
+  - names:
+    - registry.k8s.io/pause:3.10
+    sizeBytes: 267933
+  nodeInfo:
+    architecture: arm64
+    bootID: 15c0229a-ab70-4e04-b1bb-52e61391065f
+    containerRuntimeVersion: containerd://2.2.0
+    kernelVersion: 6.12.76-linuxkit
+    kubeProxyVersion: ""
+    kubeletVersion: v1.34.3
+    machineID: ce48213125dd4d4787ef31f27f7f0826
+    operatingSystem: linux
+    osImage: Debian GNU/Linux 12 (bookworm)
+    swap:
+      capacity: 1073737728
+    systemUUID: ce48213125dd4d4787ef31f27f7f0826
+  runtimeHandlers:
+  - features:
+      recursiveReadOnlyMounts: true
+      userNamespaces: true
+    name: ""
+  - features:
+      recursiveReadOnlyMounts: true
+      userNamespaces: true
+    name: runc
+  - features:
+      recursiveReadOnlyMounts: true
+      userNamespaces: true
+    name: test-handler
