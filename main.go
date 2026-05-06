@@ -7,6 +7,24 @@ import (
 
 func main() {
 
+	fmt.Print("How old are you ? ")
+	var age int64
+	fmt.Scan(&age)
+
+	if age < 30 && age > 16 {
+		fmt.Println("You're young")
+	} else if age > 30 && age < 50 {
+		fmt.Println("You're at middle age")
+	} else if age >= 50 && age < 60 {
+		fmt.Println("you're old man")
+	} else if age >= 60 && age <= 100 {
+		fmt.Println("you're a lucky man")
+	}
+
+	arr_for_main_slice := []int{4, 5, 6, 8, 94, 455, 767, 789, 986, 985}
+	slice_main := arr_for_main_slice[1:8]
+	fmt.Println(slice_main)
+
 	arr_for_slice := []int{1, 3, 5, 6, 7, 8, 9}
 	slice := arr_for_slice[2:5]
 

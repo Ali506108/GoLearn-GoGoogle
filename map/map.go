@@ -6,6 +6,8 @@ import (
 
 func main() {
 
+	fmt.Println("Hello hwo are you !")
+
 	kafka := make(map[string]int)
 	kafka["localhost:9092"] = 9092
 	fmt.Println(kafka)
@@ -42,6 +44,23 @@ func main() {
 		fmt.Println("Error")
 	} else {
 		fmt.Println("Okay")
+	}
+
+	myMap5 := make(map[string]map[string]string)
+
+	new_map := make(map[string]string)
+	new_map["Alex"] = "U.K"
+
+	myMap5["Country"] = new_map
+
+	fmt.Println(myMap5)
+
+	messages := "Hello how are you"
+
+	for i, v := range messages {
+		fmt.Println(i, v)
+		fmt.Printf("Index : %d , Rune: %c\n", i, v)
+
 	}
 
 }
