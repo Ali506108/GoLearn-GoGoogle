@@ -1,0 +1,29 @@
+{
+  "workbench.colorTheme": "Catppuccin Mocha",
+  "workbench.iconTheme": "material-icon-theme",
+  "editor.fontFamily": "JetBrainsMono Nerd Font, Menlo, monospace",
+  "editor.fontSize": 14,
+  "editor.fontLigatures": true,
+  "editor.inlayHints.enabled": "on",
+  "editor.suggest.preview": true,
+  "editor.suggest.showInlineDetails": true,
+  "gopls": {
+    "ui.completion.usePlaceholders": true,
+    "ui.semanticTokens": true,
+    "ui.inlayhint.hints": {
+      "assignVariableTypes": true,
+      "compositeLiteralFields": true,
+      "constantValues": true,
+      "functionTypeParameters": true,
+      "parameterNames": true,
+      "rangeVariableTypes": true
+    }
+  },
+  "[go]": {
+    "editor.defaultFormatter": "golang.go",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    }
+  }
+}
